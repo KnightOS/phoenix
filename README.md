@@ -1,8 +1,8 @@
 # Phoenix
 
-The classic space shoot-em-up game ported to KnightOS.
+The classic space shoot-em-up game ported to KnightOS. This also includes a TI-84+ Color Silver Edition port of Phoenix.
 
-Original, by Patrick Davidson: http://www.ticalc.org/archives/files/fileinfo/148/14876.html
+Original by Patrick Davidson: http://www.ticalc.org/archives/files/fileinfo/148/14876.html
 
 ## Compiling
 
