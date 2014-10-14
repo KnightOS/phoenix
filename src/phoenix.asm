@@ -21,7 +21,7 @@ name:
 ;D_HL_DECI       =_disphl
 ;TX_CHARPUT      =_putc
 
-#include "phoenixz.i"
+#include "src/phoenixz.i"
 
 start:
     kld(de, corelibPath)
@@ -48,31 +48,31 @@ start:
     corelib(showErrorAndQuit)
     ret
 
-#include "shims.asm"
-#include "main.asm"
-#include "lib.asm"
-#include "title.asm"
-#include "disp.asm"
-#include "drwspr.asm"
-#include "player.asm"
-#include "shoot.asm"
-#include "bullets.asm"
-#include "enemies.asm"
-#include "init.asm"
-#include "enemyhit.asm"
-#include "collide.asm"
-#include "ebullets.asm"
-#include "hityou.asm"
-#include "shop.asm"
-;#include "helper.asm"
-#include "eshoot.asm"
-;#include "score.asm"
-#include "emove.asm"
-#include "images.asm"
-#include "info.asm"
-#include "data.asm"
-#include "levels.asm"
-#include "vars.asm"
+#include "src/shims.asm"
+#include "src/main.asm"
+#include "src/lib.asm"
+#include "src/title.asm"
+#include "src/disp.asm"
+#include "src/drwspr.asm"
+#include "src/player.asm"
+#include "src/shoot.asm"
+#include "src/bullets.asm"
+#include "src/enemies.asm"
+#include "src/init.asm"
+#include "src/enemyhit.asm"
+#include "src/collide.asm"
+#include "src/ebullets.asm"
+#include "src/hityou.asm"
+#include "src/shop.asm"
+;#include "src/helper.asm"
+#include "src/eshoot.asm"
+;#include "src/score.asm"
+#include "src/emove.asm"
+#include "src/images.asm"
+#include "src/info.asm"
+#include "src/data.asm"
+#include "src/levels.asm"
+#include "src/vars.asm"
 
 corelibPath:
     .db "/lib/core", 0
