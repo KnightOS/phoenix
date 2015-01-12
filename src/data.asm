@@ -41,6 +41,12 @@ restore_game:
     cp a
     ret
 
+delete_save:
+    kld(de, save_path)
+    pcall(fileExists)
+    pcall(z, deleteFile)
+    ret
+
 save_dir:
     .db "/var/phoenix", 0
 save_path:

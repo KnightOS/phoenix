@@ -144,7 +144,6 @@ cash_overflow:
 ;############## Losing the game
 
 game_lose:
+    ; TODO: game loss screen
+    kcall(delete_save)
     pcall(exitThread)
-    ; TODO
-    ;call no_high_score
-    ;jp game_exit
