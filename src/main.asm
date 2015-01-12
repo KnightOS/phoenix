@@ -36,7 +36,8 @@ main:
     kld(hl, level_table) ; use default level data
     kld((level_addr), hl)
 
-    ;call restore_game ; check for saved game
+    kcall(restore_game) ; check for saved game
+    jr z, pre_main_loop
 
     xor a ; by default, no external level
     kld((extlevel), a)

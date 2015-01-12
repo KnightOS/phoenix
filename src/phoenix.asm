@@ -22,6 +22,7 @@ name:
 ;TX_CHARPUT      =_putc
 
 #include "src/phoenixz.i"
+#include "src/constants.asm"
 
 start:
     kld(de, corelibPath)

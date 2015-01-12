@@ -109,7 +109,7 @@ handle_input:
     cp kEnter
     jr z, pause
     cp kMODE
-    ;kjp(z, game_save) ; TODO
+    kjp(z, game_save)
     cp kDEL
     pcall(z, exitThread)
     cp kCLEAR
