@@ -64,12 +64,14 @@ enemy_display:
     jr nz, animated
     inc hl
     kcall(DO_LD_HL_MHL)
+    kcall(relocate_hl)
     kjp(drw_spr_wide)
 
 animated:
     push hl
     inc hl
     kcall(DO_LD_HL_MHL)            ; HL -> sprite list
+    kcall(relocate_hl)
     kcall(DO_LD_HL_MHL_EP)            ; HL -> sprite
     kcall(drw_spr_wide)
     pop hl
@@ -80,11 +82,13 @@ animated:
     push hl
     inc hl
     kcall(DO_LD_HL_MHL)            ; HL -> sprite list
-    inc hl
-    inc hl
+    ld e, l \ ld d, h
+    kcall(relocate_hl)
+    inc hl \ inc de
+    inc hl \ inc de
     ld a, (hl)                  ; A = time for next image
-    inc hl
-    ex de, hl                   ; DE -> sprite list
+    inc hl \ inc de
+    ;ex de, hl                   ; DE -> sprite list (non-relocated)
     pop hl                      ; HL -> e_imageseq
 
     cp -1
@@ -103,9 +107,10 @@ store_new_anim_data:
 restart_sequence:
     ex de, hl                   ; DE -> e_imageseq, HL -> sprite list
     kcall(DO_LD_HL_MHL_EP)            ; HL -> sprite list new position
+    ld e, l \ ld d, h
+    kcall(relocate_hl)
     ld a, (hl)                  ; A = time for next image
-    inc hl
-    ex de, hl
+    inc hl \ inc de
     jr store_new_anim_data
 
 kill_enemy:

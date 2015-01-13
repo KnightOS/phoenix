@@ -20,13 +20,6 @@ restart:
     kld(hl, level)
     ld (hl), 0
 
-relocate_defaults:
-    kld(bc, (entryPoint))
-    kld(hl, (default_reloc))
-    add hl, bc
-    kld((default_reloc), hl)
-    ret
-
 load_level:
     kld(hl, default_data)
     kld(de, enemy_buffer)         ; zero enemy buffer
@@ -122,7 +115,7 @@ back_to_loader:
 
 copy_word_reloc:
     push hl
-        kcall(DO_LD_HL_MHL_EP)
+        kcall(DO_LD_HL_MHL)
         ex de, hl
         ld (hl), e
         inc hl
@@ -181,12 +174,6 @@ set_imageanim:
     ld a, (de)
     inc de
     kld((enemy_buffer+e_imageseq), a)
-    push bc
-        kld(bc, (entryPoint))
-        ex de, hl
-        add hl, bc
-        ex de, hl
-    pop bc
     kld((enemy_buffer+e_imageptr), de)
 back_to_loader_2:
     kjp(level_loader)
@@ -225,6 +212,7 @@ install_first:
     push hl
 
     kld(hl, (enemy_buffer+e_imageptr))    ; load image size
+    kcall(relocate_hl)
     kld(a, (enemy_buffer+e_imageseq))
     or a
     jr z, not_animated
@@ -254,7 +242,6 @@ default_data:
     .db 0, -60, 0         ; e_movedata
     .db 10, 0, 10, 0       ; e_x, e_w, e_y, e_h
     .db 0               ; e_imageseq
-default_reloc:
     .dw img_enemy_1     ; e_imageptr
     .db FT_RANDOM       ; e_firetype
     .db 2, 0             ; e_firerate, e_firedata

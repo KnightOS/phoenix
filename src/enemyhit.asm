@@ -277,7 +277,7 @@ collision_yes:
     add hl, de
     ld (hl), 2          ; set image to exploding
     inc hl
-    kld(de, explosion_sequence + 1)
+    ld de, explosion_sequence + 1
     ld (hl), e
     inc hl
     ld (hl), d

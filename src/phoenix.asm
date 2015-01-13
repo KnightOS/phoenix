@@ -31,7 +31,6 @@ start:
     pcall(getCurrentThreadId)
     pcall(getEntryPoint)
     kld((entryPoint), hl)
-    kcall(relocate_defaults)
 
     pcall(getLcdLock)
     pcall(getKeypadLock)
@@ -47,6 +46,15 @@ start:
         pcall(nz, exitThread) ; Nothing we can do about it
     pop af
     corelib(showErrorAndQuit)
+    ret
+
+relocate_hl:
+    push af
+    push bc
+        kld(bc, 0)
+        add hl, bc
+    pop bc
+    pop af
     ret
 
 #include "src/shims.asm"
