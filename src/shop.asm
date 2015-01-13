@@ -107,7 +107,7 @@ shop_down:
         pcall(putSpriteXOR)
     pop hl
     inc (hl)
-    jr shop_loop
+    kjp(shop_loop)
 shop_up:
     ld a, (hl)
     or a
