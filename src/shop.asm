@@ -71,9 +71,9 @@ shop_loop:
     cp kUp
     jr z, shop_up
     cp kMODE
-    ret z
+    jr z, .back
     cp kDEL
-    ret z
+    jr z, .back
     cp kCLEAR
     ret z
     cp kEnter
@@ -83,6 +83,9 @@ shop_loop:
     cp k2nd
     kcall(z, shop_select)
     jr shop_loop
+.back:
+    pcall(flushKeys)
+    ret
 
 ;############## Shop cursor movement
 
