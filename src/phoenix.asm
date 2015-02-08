@@ -61,6 +61,7 @@ relocate_hl:
 #include "src/main.asm"
 #include "src/lib.asm"
 #include "src/title.asm"
+#include "src/about.asm"
 #include "src/disp.asm"
 #include "src/drwspr.asm"
 #include "src/player.asm"

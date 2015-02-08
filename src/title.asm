@@ -26,10 +26,6 @@ show_title:
     ld b, d
     kld(hl, title_main)
     pcall(drawStr)
-    kld(hl, author)
-    ld de, 0x0E2F
-    ld b, d
-    pcall(drawStr)
     ld de, 0x1D08
     kld(hl, title_options)
     ld b, d
@@ -124,9 +120,10 @@ title_loop:
 .high_scores:
 .instructions:
 .settings:
-.contact_info:
     ; TODO
     pcall(exitThread)
+.contact_info:
+    kjp(about_screen)
 
 ;############## Prepare new game
 
@@ -254,16 +251,12 @@ scroll_end:
 
 title_main:
     .db "=== Phoenix ===", 0
-author:
-    .db "        Patrick Davidson\n"
-    .db "ported for KnightOS by\n"
-    .db "             Drew DeVault", 0
 title_options:
     .db "Start Game\n"
     .db "High Scores\n"
     .db "Instructions\n"
     .db "Settings\n"
-    .db "Contact Info\n"
+    .db "About\n"
     .db "Quit", 0
 caret_sprite:
     .db 0b10000000
