@@ -1,3 +1,3 @@
 name=Phoenix
-icon=/share/icons/phoenix.kio
+icon=/share/icons/phoenix.img
 exec=/bin/phoenix
