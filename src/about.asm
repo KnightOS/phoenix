@@ -41,9 +41,9 @@ about_version:
     .db 0
 about_original:
     .db "A KnightOS port of\n"
-    .db "          Phoenix 4.1", 0
+    .db "   Phoenix 4.1", 0
 about_authors:
-    .db "               PORT BY\n"
-    .db "     Drew DeVault\n"
-    .db "   ORIGINALLY BY\n"
+    .db "    PORT BY\n"
+    .db "  Drew DeVault\n"
+    .db " ORIGINALLY BY\n"
     .db "Patrick Davidson", 0
